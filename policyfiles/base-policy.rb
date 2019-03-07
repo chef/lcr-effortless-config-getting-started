@@ -8,13 +8,14 @@ name 'base'
 
 # Where to find external cookbooks:
 default_source :supermarket
+default_source :chef_repo, "../"
 
 # run_list: chef-client will run these recipes in the order specified.
 run_list 'base::default'
 
 # Specify a custom source for a single cookbook:
-cookbook 'base', path: '../cookbooks/base'
-cookbook 'hardening', path: '../cookbooks/hardening'
+# cookbook 'base', path: '../cookbooks/base'
+# cookbook 'hardening', path: '../cookbooks/hardening'
 
 # Policyfile defined attributes
 default['base']['message'] = "This node was hardened by Chef. Policyfile created at #{Time.now.utc}\n"
