@@ -4,22 +4,18 @@
 # https://docs.chef.io/policyfile.html
 
 # A name that describes what the system you're building with Chef does.
-name 'base'
+name "base"
 
 # Where to find external cookbooks:
 default_source :supermarket
 default_source :chef_repo, "../"
 
 # run_list: chef-client will run these recipes in the order specified.
-run_list 'base::default'
+run_list ["patching::default",
+          "hardening::default"]
 
-# Specify a custom source for a single cookbook:
-# cookbook 'base', path: '../cookbooks/base'
-# cookbook 'hardening', path: '../cookbooks/hardening'
-
-# Policyfile defined attributes
-default['base']['message'] = "This node was hardened by Chef. Policyfile created at #{Time.now.utc}\n"
-
+# run_list ["hardening::default",
+#           "audit::default"]
 
 default['hardening'] = { }
 
