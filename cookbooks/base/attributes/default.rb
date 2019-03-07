@@ -1,1 +1,1 @@
-default['base']['message'] = 'This node was hardened by Chef'
+default['base']['message'] = 'This node was hardened by Chef.'
