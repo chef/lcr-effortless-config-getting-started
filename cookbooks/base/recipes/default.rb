@@ -6,6 +6,9 @@
 
 include_recipe 'hardening::default'
 
-file '/etc/motd' do
-  content node['base']['message']
+if node['os'] == 'linux'
+  file '/etc/motd' do
+    content node['base']['message']
+  end
 end
+
