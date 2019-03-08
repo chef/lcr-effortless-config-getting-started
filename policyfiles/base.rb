@@ -26,3 +26,5 @@ default['applications'] = {
   },
   'windows' => {}
 }
+
+default['base']['message'] = "This node was hardened by Chef. Policyfile created at #{Time.now.utc}\n"
