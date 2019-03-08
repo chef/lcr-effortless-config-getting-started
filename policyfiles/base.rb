@@ -11,11 +11,9 @@ default_source :supermarket
 default_source :chef_repo, "../"
 
 # run_list: chef-client will run these recipes in the order specified.
-run_list ["patching::default",
+run_list ["myapp::default",
+          "patching::default",
           "hardening::default"]
-
-# run_list ["hardening::default",
-#           "audit::default"]
 
 default['hardening'] = { }
 
@@ -27,4 +25,4 @@ default['applications'] = {
   'windows' => {}
 }
 
-default['base']['message'] = "This node was hardened by Chef. Policyfile created at #{Time.now.utc}\n"
+default['myapp']['message'] = "This node was hardened by Chef. Policyfile created at #{Time.now.utc}\n"
