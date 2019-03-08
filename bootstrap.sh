@@ -1,4 +1,6 @@
 #!/bin/bash
+echo "pkg_origin is $1"
+echo "pkg_name is $2"
 
 if [ ! -e "/bin/hab" ]; then
   curl https://raw.githubusercontent.com/habitat-sh/habitat/master/components/hab/install.sh | sudo bash
@@ -19,14 +21,6 @@ fi
 pkg_origin=$1
 pkg_name=$2
 
-# I put these two line in for troubleshooting - JF
-echo "pkg_origin is $pkg_origin"
-echo "pkg_name is $pkg_name"
-
-# ToDo Hardcoding - JF
-pkg_origin=jhn300119
-pkg_name=base
-
 echo "Starting $pkg_origin/$pkg_name"
 
 latest_hart_file=$(ls -la /tmp/results/$pkg_origin-$pkg_name* | tail -n 1 | cut -d " " -f 10)
@@ -36,7 +30,8 @@ echo "Installing $latest_hart_file"
 hab pkg install $latest_hart_file
 
 echo "Determing pkg_prefix for $latest_hart_file"
-pkg_prefix=$(find /hab/pkgs/$pkg_origin/chef-base -maxdepth 2 -mindepth 2 | sort | tail -n 1)
+# pkg_prefix=$(find /hab/pkgs/$pkg_origin/chef-base -maxdepth 2 -mindepth 2 | sort | tail -n 1)
+pkg_prefix=$(find /hab/pkgs/$pkg_origin/$pkg_name -maxdepth 2 -mindepth 2 | sort | tail -n 1)
 
 echo "Found $pkg_prefix"
 
