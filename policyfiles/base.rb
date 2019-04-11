@@ -25,4 +25,4 @@ default['applications'] = {
   'windows' => {}
 }
 
-default['myapp']['message'] = "This node was hardened by Chef. Policyfile created at #{Time.now.utc}\n"
+default['myapp']['message'] = "This node was hardened by Chef Infra. Policyfile created at #{Time.now.utc}\n"
