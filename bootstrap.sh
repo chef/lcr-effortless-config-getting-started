@@ -23,8 +23,6 @@ pkg_name=$2
 
 echo "Starting $pkg_origin/$pkg_name"
 
-#latest_hart_file=$(ls -la /tmp/results/$pkg_origin-$pkg_name* | tail -n 1 | cut -d " " -f 9)
-#latest_hart_file=$(ls -la /tmp/results/$pkg_origin-$pkg_name* | tail -n 1 | cut -d " " -f 10)
 latest_hart_file=$(ls -1art /tmp/results/$pkg_origin-$pkg_name* |tail -1)
 echo "Latest hart file is $latest_hart_file"
 
