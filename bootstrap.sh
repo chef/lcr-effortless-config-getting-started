@@ -1,6 +1,7 @@
 #!/bin/bash
 echo "pkg_origin is $1"
 echo "pkg_name is $2"
+export HAB_LICENSE="accept-no-persist"
 
 if [ ! -e "/bin/hab" ]; then
   curl https://raw.githubusercontent.com/habitat-sh/habitat/master/components/hab/install.sh | sudo bash
