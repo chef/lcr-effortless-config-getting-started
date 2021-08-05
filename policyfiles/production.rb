@@ -7,7 +7,7 @@
 name "production"
 
 # Where to find external cookbooks:
-default_source :supermarketdefault_source :supermarket
+default_source :supermarket
 default_source :chef_repo, "../"
 
 include_policy "base", path: "./base.lock.json"
