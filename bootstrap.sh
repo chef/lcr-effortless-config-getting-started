@@ -23,14 +23,15 @@ pkg_name=$2
 
 echo "Starting $pkg_origin/$pkg_name"
 
-latest_hart_file=$(ls -la /tmp/results/$pkg_origin-$pkg_name* | tail -n 1 | cut -d " " -f 9)
+. /tmp/results/last_build.env
+latest_hart_file="/tmp/results/$pkg_artifact"
 echo "Latest hart file is $latest_hart_file"
 
 echo "Installing $latest_hart_file"
 hab pkg install $latest_hart_file
 
 echo "Determining pkg_prefix for $latest_hart_file"
-pkg_prefix=$(find /hab/pkgs/$pkg_origin/$pkg_name -maxdepth 2 -mindepth 2 | sort | tail -n 1)
+pkg_prefix=$(hab pkg path $pkg_origin/$pkg_name)
 
 echo "Found $pkg_prefix"
 
